@@ -28,5 +28,10 @@ def move_files_to_parent_directory(directory):
             os.rmdir(foldername)
 
 if __name__ == "__main__":
-    # 调用函数，从当前目录开始处理
-    move_files_to_parent_directory(os.getcwd())
+    # 添加二次确认提示
+    confirmation = input("This will move all files in subdirectories to the parent directory. Are you sure? ([y]/n): ").strip().lower()
+    if confirmation == '' or confirmation == 'y':
+        # 调用函数，从当前目录开始处理
+        move_files_to_parent_directory(os.getcwd())
+    else:
+        print("Operation cancelled.")
